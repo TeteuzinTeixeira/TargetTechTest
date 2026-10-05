@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/estoque")
+@RequestMapping("/api/stock")
 public class StockController {
 
     @Autowired
@@ -22,7 +22,7 @@ public class StockController {
         this.useCase = useCase;
     }
 
-    @PostMapping("/movimentacao")
+    @PostMapping("/movimentation")
     public ResponseEntity<StockResponse> movimentar(@Valid @RequestBody MovimentProductRequest request) {
         StockResponse response = useCase.moviment(request);
         return ResponseEntity.ok(response);
