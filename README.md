@@ -165,3 +165,38 @@ Calcula o valor dos juros com base na data de vencimento e valor informado, apli
   "valorTotal": 110.00
 }
 ```
+
+## 🧪 Testes Unitários
+
+A camada de Casos de Uso (`core/useCase`) foi amplamente testada para garantir a integridade de todas as regras de negócio de forma isolada, rápida e independente de dependências externas (como banco de dados ou redes).
+
+Os testes foram construídos utilizando **JUnit 5**, **AssertJ** para asserções fluentes e **Mockito** para isolamento de dependências nos repositories.
+
+### 📊 Cobertura de Testes (`core/useCase`)
+
+| Métrica | Cobertura | Status |
+| :--- | :---: | :---: |
+| **Linhas (Line Coverage)** | **100%** | 🟢 |
+| **Ramificações (Branch Coverage)** | **100%** | 🟢 |
+
+---
+
+### 🛡️ Cenários Cobertos
+
+* **`ProcessSellUseCase`**:
+    * Validação de listas nulas, vazias ou objetos com campos incompletos.
+    * Faixas de comissão de 0% (abaixo de R$ 100), 1% (R$ 100 a R$ 499,99) e 5% (R$ 500+).
+    * Consolidação e agrupamento correto de totais por vendedor.
+* **`MovimentProductUseCase`**:
+    * Sucesso nas movimentações de `ENTRADA` e `SAIDA`.
+    * Lançamento de exceção para produtos não encontrados (`404/400`).
+    * Validação de consistência e exceção ao tentar realizar saída sem saldo suficiente.
+* **`CalculateFeeUseCase`**:
+    * Contas no prazo ou com vencimento futuro (0% de multa).
+    * Cálculo exato da multa diária de 2,5% ao dia conforme os dias de atraso.
+    * Precisão e arredondamento financeiro de casas decimais (`HALF_UP`).
+
+Para executar a suíte de testes unitários da aplicação, utilize o comando:
+
+```bash
+./mvnw test
