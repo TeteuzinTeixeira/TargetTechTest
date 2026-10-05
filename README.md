@@ -111,3 +111,57 @@ Processa o lote de vendas e retorna o total consolidado de comissão por vendedo
   }
 ]
 ```
+
+#### `POST /api/stock/movimentation`
+
+Realiza uma entrada ou saída de mercadoria do depósito e retorna a quantidade final em estoque.
+
+**Request Body (`application/json`)**
+
+```json
+{
+  "codigoProduto": 101,
+  "tipo": "SAIDA",
+  "descricao": "Venda de balcão",
+  "quantidade": 20
+}
+```
+
+**Response Body (`200 OK`)**
+
+```json
+{
+  "codigoProduto": 101,
+  "descricaoProduto": "Caneta Azul",
+  "tipoMovimentacao": "SAIDA",
+  "descricaoMovimentacao": "Venda de balcão",
+  "quantidadeMovimentada": 20,
+  "quantidadeEstoqueFinal": 130
+}
+```
+
+#### `POST /api/fees/calculate`
+
+Calcula o valor dos juros com base na data de vencimento e valor informado, aplicando 2,5% ao dia de atraso.
+
+**Request Body (`application/json`)**
+
+```json
+{
+  "valor": 100.00,
+  "dataVencimento": "2026-10-01"
+}
+```
+
+**Response Body (`200 OK`)**
+
+```json
+{
+  "valorOriginal": 100.00,
+  "dataVencimento": "2026-10-01",
+  "dataCalculo": "2026-10-05",
+  "diasAtraso": 4,
+  "valorMulta": 10.00,
+  "valorTotal": 110.00
+}
+```

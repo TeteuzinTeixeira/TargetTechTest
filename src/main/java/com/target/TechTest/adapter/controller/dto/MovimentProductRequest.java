@@ -9,10 +9,6 @@ import lombok.Data;
 @Data
 public class MovimentProductRequest {
 
-    @Schema(description = "Identificador único da movimentação", example = "1001")
-    @NotNull(message = "O ID da movimentação é obrigatório")
-    private Long idMovimentacao;
-
     @Schema(description = "Código do produto no estoque", example = "101")
     @NotNull(message = "O código do produto é obrigatório")
     private Long codigoProduto;
