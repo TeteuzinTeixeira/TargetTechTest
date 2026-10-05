@@ -12,6 +12,31 @@ API REST desenvolvida em **Java** e **Spring Boot** responsável pelo recebiment
 * **Maven** (Gerenciamento de dependências)
 
 ---
+## 📖 Documentação da API (Swagger / OpenAPI)
+
+A aplicação conta com documentação interativa gerada automaticamente pelo **Springdoc OpenAPI**, permitindo visualizar, explorar e testar todos os endpoints REST diretamente pelo navegador.
+
+### 🚀 Acessando a Interface
+
+Com a aplicação rodando localmente, acesse a documentação no seguinte endereço:
+
+* **Swagger UI:** [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+* **OpenAPI Spec (JSON):** [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+
+---
+
+### 📌 Endpoints Documentados
+
+A documentação interativa detalha os parâmetros de entrada, DTOs de requisição/resposta e códigos de retorno para os principais fluxos da aplicação:
+
+| Recurso | Método | Endpoint                   | Descrição |
+| :--- | :---: |:---------------------------| :--- |
+| **Vendas** | `POST` | `/api/sell`                | Processa a lista de vendas e calcula as comissões por vendedor. |
+| **Estoque** | `POST` | `/api/stock/movimentation` | Realiza movimentações de entrada e saída no estoque de produtos. |
+| **Juros** | `POST` | `/api/fees/calculate`      | Calcula multas e juros para pagamentos em atraso. |
+
+> 💡 **Dica:** Utilize o botão **"Try it out"** na interface do Swagger UI para enviar requisições de teste diretamente aos controllers da aplicação.
+---
 
 ## 📐 Arquitetura do Projeto
 
