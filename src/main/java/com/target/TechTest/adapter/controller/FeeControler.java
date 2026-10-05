@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/fees")
+@RequestMapping("/api/fees")
 public class FeeControler {
 
     private final CalculateFeeUseCase useCase;
@@ -20,7 +20,7 @@ public class FeeControler {
         this.useCase = useCase;
     }
 
-    @PostMapping("/calcular")
+    @PostMapping("/calculate")
     public ResponseEntity<CalculateFeeResponse> calcular(@Valid @RequestBody CalculateFeeRequest request) {
         CalculateFeeResponse response = useCase.executar(request);
         return ResponseEntity.ok(response);
